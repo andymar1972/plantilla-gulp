@@ -24,7 +24,7 @@ const production = false;
 
 gulp.task("styles", () => {
   return gulp
-    .src("./dev/css/*.css")
+    .src("./src/css/*.css")
     .pipe(pumbler())
     .pipe(concat("styles-min.css"))
     .pipe(postcss(cssPlugins))
@@ -34,7 +34,7 @@ gulp.task("styles", () => {
 
 gulp.task("babel", () => {
   return gulp
-    .src("./dev/js/*.js")
+    .src("./src/js/*.js")
     .pipe(pumbler())
     .pipe(concat("scripts-min.js"))
     .pipe(babel())
@@ -44,7 +44,7 @@ gulp.task("babel", () => {
 
 gulp.task("views", () => {
   return gulp
-    .src("./dev/views/pages/*.pug")
+    .src("./src/views/pages/*.pug")
     .pipe(pumbler())
     .pipe(
       pug({
@@ -56,7 +56,7 @@ gulp.task("views", () => {
 
 gulp.task("sass", () => {
   return gulp
-    .src("./dev/scss/styles.scss")
+    .src("./src/scss/styles.scss")
     .pipe(pumbler())
     .pipe(
       sass({
@@ -85,7 +85,7 @@ gulp.task("default", () => {
   });
   //gulp.watch("./src/*.html", gulp.series("html-min").on('change',reload));
   //gulp.watch("./src/css/*.css", gulp.series("styles").on('change',reload));
-  gulp.watch("./dev/views/**/*.pug", gulp.series("views")).on("change", reload);
-  gulp.watch("./dev/scss/**/*.scss", gulp.series("sass"));
-  gulp.watch("./dev/js/*.js", gulp.series("babel")).on("change", reload);
+  gulp.watch("./src/views/**/*.pug", gulp.series("views")).on("change", reload);
+  gulp.watch("./src/scss/**/*.scss", gulp.series("sass"));
+  gulp.watch("./src/js/*.js", gulp.series("babel")).on("change", reload);
 });
